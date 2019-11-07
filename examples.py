@@ -5,8 +5,8 @@ Berkeley Image Seg is a region merging image object segmentation algorithm
 Give it multiband satellite imagery and it returns an int image labeled with object IDs
 www.imageseg.com  jscar@berkenviro.com
 
->>> endpoint = 'http://localhost:8080/v1/segment'
->>> # endpoint = 'https://api.imageseg.com/v1/segment'
+>>> # endpoint = 'http://localhost:8080/v1/segment'
+>>> endpoint = 'https://api.imageseg.com/v1/segment'
 
 Send a small image as an array/list in 'array' parameter in URL of a GET request
 >>> r = requests.get(endpoint + '?array=[[[1]],[[2]],[[1]]]')  # 3 band, 1 pix
@@ -52,16 +52,21 @@ Send the link to a file on the internet as 'url' parameter of a GET request
 >>> regions.max() + 1
 338
 
-Your multi-spectral imagery, computed bands, or EO fused with LiDAR are cool too
+Your multi-spectral sensor, computed bands, or EO fused with LiDAR are cool too
+>>> rasterio.open('11-band.tif').profile  #doctest:+NORMALIZE_WHITESPACE
+{'driver': 'GTiff', 'dtype': 'int16', 'nodata': None,
+ 'width': 200, 'height': 200, 'count': 11, 'crs': CRS.from_epsg(32613),
+ 'transform': Affine(30.0, 0.0, 399255.0, 0.0, -30.0, 2605275.0),
+ 'tiled': False, 'interleave': 'pixel'}
 >>> r = requests.post(endpoint, files={'file': open('11-band.tif', 'rb')})
 >>> dataset = rasterio.io.MemoryFile(r.content).open()
->>> dataset.crs, dataset.transform
-(CRS.from_epsg(32613), Affine(30.0, 0.0, 399255.0,
-       0.0, -30.0, 2605275.0))
->>> regions = dataset.read(1)
->>> regions.shape
-(200, 200)
->>> regions.max() + 1
+>>> dataset.profile  #doctest:+NORMALIZE_WHITESPACE
+{'driver': 'GTiff', 'dtype': 'int32', 'nodata': 0.0,
+ 'width': 200, 'height': 200, 'count': 1, 'crs': CRS.from_epsg(32613),
+ 'transform': Affine(30.0, 0.0, 399255.0, 0.0, -30.0, 2605275.0),
+ 'blockxsize': 256, 'blockysize': 256, 'tiled': True, 'compress': 'lzw',
+ 'interleave': 'band'}
+>>> dataset.read(1).max() + 1
 187
 
 RapidEye from https://developers.planet.com/planetschool/downloading-imagery/

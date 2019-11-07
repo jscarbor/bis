@@ -41,10 +41,10 @@ def entry():
     wasfile = False
     if 'file' in request.files:
         wasfile = True
-        file = request.files['file']
-        filename = file.name
+        f = request.files['file']
+        filename = f.name
         tmpname = NamedTemporaryFile().name
-        file.save(tmpname)
+        f.save(tmpname)
         dataset = rasterio.open(tmpname)
         array = dataset.read()
         os.remove(tmpname)
