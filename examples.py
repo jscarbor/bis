@@ -6,8 +6,8 @@ Give it multiband satellite imagery and it returns an int image labeled with obj
 www.imageseg.com  jscar@berkenviro.com
 This code is at https://github.com/jscarbor/bis
 
->>> endpoint = 'http://localhost:8080/v1/segment'
->>> # endpoint = 'https://api.imageseg.com/v1/segment'
+>>> # endpoint = 'http://localhost:8080/v1/segment'
+>>> endpoint = 'https://api.imageseg.com/v1/segment'
 
 Send a small image as an array/list in 'array' parameter in URL of a GET request
 >>> r = requests.get(endpoint + '?array=[[[1]],[[2]],[[1]]]')  # 3 band, 1 pix
