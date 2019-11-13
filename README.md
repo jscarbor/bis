@@ -24,3 +24,5 @@ https://www.google.com/webmasters/verification/home?hl=en&authuser=1
 On Wix console set CNAME from api.imageseg.com to ghs.googlehosted.com  
 
 www.imageseg.com  
+
+The image segmentation binaries in this repo require a license key. The deployment at api.imageseg.com has a license installed and is available for trial use.
