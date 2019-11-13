@@ -3,7 +3,7 @@
 Berkeley Image Seg is a region merging image object segmentation algorithm  
 Give it multiband satellite imagery and it returns an int image labeled with object IDs  
 
-See [app.py](app.py) as the Flask server and [examples.py](examples.py) as tests calling it
+See [app.py](app.py) as the Flask server, [examples.py](examples.py) as doctests calling the server, and the [Jupyter notebook](examples.ipynb) doing a basic classification on resulting image objects
 
 This is a REST API deployed serverless to Google Cloud Run  
 Using Cloud Run because the core algorithm is Cython compiled to an so/pyd file  
