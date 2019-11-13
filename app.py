@@ -84,7 +84,7 @@ def segment(array, t=10, s=0.5, c=0.5, nd=False, ndv=0):
     >>> segment(np.array([[[1]], [[1]], [[1]]])) # One pixel, three band
     array([[0]], dtype=int32)
 
-    >>> array = rasterio.open('agé.bmp').read()  # Plain RGB image
+    >>> array = rasterio.open('img/agé.bmp').read()  # Plain RGB image
     >>> array.shape  # nbands, height, width
     (3, 127, 212)
     >>> array  # doctest:+ELLIPSIS
