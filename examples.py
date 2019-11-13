@@ -4,6 +4,7 @@ Call the satellite image segmentation REST API
 Berkeley Image Seg is a region merging image object segmentation algorithm
 Give it multiband satellite imagery and it returns an int image labeled with object IDs
 www.imageseg.com  jscar@berkenviro.com
+This code is at https://github.com/jscarbor/bis
 
 >>> # endpoint = 'http://localhost:8080/v1/segment'
 >>> endpoint = 'https://api.imageseg.com/v1/segment'
